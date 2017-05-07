@@ -1,0 +1,91 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 50px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #ffe645;
+
+}
+
+@media all and (max-width: 992px) and (min-width: 768px) {
+h1.header-sm {
+    font-size: 84px;
+    }
+h1.highlight-sm {
+    font-size: 74px;
+    }
+}
+
+@media all and (max-width: 768px) {
+h1.header-sm {
+    font-size: 15vw;
+    }
+h1.highlight-sm {
+    font-size: 13vw;
+    }
+h2.subtitle-sm {
+    font-size: 7vw;
+    }
+}
+
+.jumbotron-md-lg  {
+    height: 100vH;
+    background-image: url("./damian-zaleski-843.jpg");
+    background-size: cover;
+}
+
+.jumbotron-xs-sm {
+    background-color: #FFE546;
+}
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.landing {
+    margin-bottom: 5%;
+}
+
+.title {
+    padding-left: 53%;
+    padding-top: 25%;
+}
+
+.title-sm {
+    padding-left: 5%;
+}
+
+h1.header {
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 84px;
+}
+
+h1.highlight{
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 74px;
+}
+
+h1.header-sm {
+    font-family: "Josefin Sans", sans-serif;
+}
+
+h1.highlight-sm{
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.newTodo, .imprint, .overview {
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+.header-section {
+    margin-bottom: 25px;
+}

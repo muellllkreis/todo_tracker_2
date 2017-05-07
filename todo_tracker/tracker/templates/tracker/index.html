@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> TODOTracker </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
+    {% load static from staticfiles %}
+    <link href="{% static "style.css" %}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand brand" href="./overview.html"><span>TodoTracker</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./overview.html">Overview</a></li>
+                <li><a href="{% url 'tracker:create' %}">Create</a></li>
+                <li><a href="./imprint.html">Imprint</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="landing">
+    <div class="jumbotron jumbotron-fluid jumbotron-md-lg hidden-xs hidden-sm">
+        <div class="title">
+            <h1 class="header">TodoTracker.</h1>
+            <h2>Keep your life organized.</h2>
+        </div>
+    </div>
+    <div class="jumbotron jumbotron-fluid jumbotron-xs-sm hidden-md hidden-lg">
+        <div class="title-sm">
+            <h1 class="header-sm">TodoTracker.</h1>
+            <h2 class="subtitle-sm">Keep your life organized.</h2>
+        </div>
+    </div>
+</section>
+<section class="overview">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="header-section">
+                    <h1 class="highlight hidden-xs hidden-sm">Overview</h1>
+                    <h1 class="highlight-sm hidden-md hidden-lg">Overview</h1>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading text-right">Open Todos</div>
+                        {% for todo in latest_todo_list %}
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    {{ todo.todo_text }}
+                                    </div>
+                                    <div class="col-md-2">
+                                    {{ todo.todo_date }}
+                                    </div>
+                                    <div class="col-md-2">
+                                    {{ todo.todo_progress }}
+                                    </div>
+                                    <div class="col-md-2">
+                                        <form name="delete" method="get" action="">
+                                        <span class="btn btn-default pull-right">
+                                            <!--<span class="glyphicon glyphicon-trash" name="action" value="Delete" aria-hidden="true" onclick="delete.submit()"></span>-->
+                                            <input type="submit" class="btn" value="Click" name="mybtn">
+                                            <div style="display: none;" name="todo_id">{{ todo.id }}</div>
+                                        </span>
+                                        </form>
+                                        <span class="btn btn-default pull-right">
+                                            <a href="./editTodo.html"><span class="glyphicon glyphicon-wrench"
+                                                                    aria-hidden="true"></span></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="footer">
+    <div class="container">
+        <p class="text-center">TodoTracker | Developed by Matias Rietig & Carolin Stolpe</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> TODO-Tracker </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap Date-Picker Plugin -->
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    {% load static from staticfiles %}
+    <link href="{% static "style.css" %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
+
+
+</head>
+<body>
+<div class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand brand" href="./overview.html"><span>TodoTracker</span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="./overview.html">Overview</a></li>
+                <li><a href="./newTodo.html">Create</a></li>
+                <li><a href="./imprint.html">Imprint</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="newTodo">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 header-section">
+                <h1 class="highlight hidden-xs hidden-sm">Create</h1>
+                <h1 class="highlight-sm hidden-md hidden-lg">Create</h1>
+            </div>
+        </div>
+		
+	  <div class="row">
+		<div class="col-md-8 col-md-offset-2">
+		  <form action="" method="post">
+			{% csrf_token %}
+			<div class="form-group">
+              <label>Description</label>
+              {{ form.todo_text }}
+            </div>
+			<div class="form-inline">
+			  <div class="form-group">
+				<label class="control-label" for="date">Deadline</label>
+				{{ form.todo_date }}
+			  </div>
+				<label>Progress</label>
+				<div class="input-group">
+				  {{ form.todo_progress }}
+				  <div class="input-group-addon">%</div>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-default pull-right" value="submit">Add new Todo to List.</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+</section>
+<footer class="footer">
+    <div class="container">
+        <p class="text-center">TodoTracker | Developed by Matias Rietig & Carolin Stolpe</p>
+    </div>
+</footer>
+</body>
+	<script>
+			/*$(document).ready(function(){
+			  var date_input=$('input[name="date"]');
+			  var container="body";
+			  var options={
+				format: 'dd/mm/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+				orientation: "top right"
+			  };
+			  date_input.datepicker(options);
+			})*/
+	</script>
+</html>
