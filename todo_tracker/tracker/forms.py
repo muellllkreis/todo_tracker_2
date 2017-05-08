@@ -7,3 +7,6 @@ class CreateForm(forms.Form):
     todo_date = forms.CharField(label='Deadline')
     todo_progress = forms.IntegerField(label='Progress', max_value=100)
 
+class DeleteForm(forms.Form):
+    todo_id = forms.CharField(max_length=0)
+

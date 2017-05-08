@@ -28,11 +28,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand brand" href="./overview.html"><span>TodoTracker</span></a>
+            <a class="navbar-brand brand" href="{% url 'tracker:index' %}"><span>TodoTracker</span></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="./overview.html">Overview</a></li>
+                <li><a href="{% url 'tracker:index' %}">Overview</a></li>
                 <li><a href="{% url 'tracker:create' %}">Create</a></li>
                 <li><a href="./imprint.html">Imprint</a></li>
             </ul>
@@ -76,11 +76,12 @@
                                     {{ todo.todo_progress }}
                                     </div>
                                     <div class="col-md-2">
-                                        <form name="delete" method="get" action="">
+                                        <form name="delete" method="post" action="{% url 'tracker:delete' todo.id %}">
+                                        {% csrf_token %}
                                         <span class="btn btn-default pull-right">
-                                            <!--<span class="glyphicon glyphicon-trash" name="action" value="Delete" aria-hidden="true" onclick="delete.submit()"></span>-->
-                                            <input type="submit" class="btn" value="Click" name="mybtn">
-                                            <div style="display: none;" name="todo_id">{{ todo.id }}</div>
+                                            <button type="submit">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
                                         </span>
                                         </form>
                                         <span class="btn btn-default pull-right">
