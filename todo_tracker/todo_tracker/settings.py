@@ -112,6 +112,8 @@ USE_I18N = True
 
 USE_L10N = True
 
+DATE_FORMAT = "SHORT_DATE_FORMAT"
+
 USE_TZ = True
 
 

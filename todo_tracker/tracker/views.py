@@ -5,8 +5,7 @@ from django.template import loader
 from django.core.urlresolvers import reverse
 
 from .models import Todo
-from .forms import CreateForm
-from .forms import DeleteForm
+from .forms import CreateForm, DeleteForm, EditForm
 
 def index(request):
     latest_todo_list = Todo.objects.order_by('-todo_date')[:5]
@@ -42,9 +41,26 @@ def create(request):
 
 def edit(request, todo_id):
     todo = Todo.objects.get(id=todo_id)
-    #todo = get_object_or_404(Todo, pk=todo_id)
-    return render(request, 'tracker/edit.html', {'todo': todo})
+    form = EditForm(initial={'todo_text': todo.todo_text, 'todo_date': todo.todo_date, 'todo_progress': todo.todo_progress})
+    context = {'form': form, 'todo': todo} 
+    return render(request, 'tracker/edit.html', context)
 
-def results(request, todo_id):
-    response = "You're looking at the results of question %s."
-    return HttpResponse(response % question_id)
+def esubmit(request, todo_id):
+    if request.method == 'POST':
+        form = EditForm(request.POST)
+        if form.is_valid():
+            todo_text = form.cleaned_data['todo_text']
+            todo_date = form.cleaned_data['todo_date']
+            todo_progress = form.cleaned_data['todo_progress']
+            t = Todo.objects.get(id=todo_id)
+            t.todo_text = todo_text
+            t.todo_date = todo_date
+            t.todo_progress = todo_progress
+            t.save()
+            return HttpResponseRedirect('/tracker/')
+        else:
+            return HttpResponseRedirect('/tracker/')
+
+    else:
+        form = CreateForm()
+        return render(request, 'tracker/edit.html', {'form': form})

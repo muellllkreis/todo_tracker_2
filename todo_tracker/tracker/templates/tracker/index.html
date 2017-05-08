@@ -80,14 +80,18 @@
                                         {% csrf_token %}
                                         <span class="btn btn-default pull-right">
                                             <button type="submit">
-                                                <span class="glyphicon glyphicon-trash"></span>
+                                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                             </button>
                                         </span>
                                         </form>
+                                        <form name="edit" method="post" action="{% url 'tracker:edit' todo.id %}">
+                                        {% csrf_token %}
                                         <span class="btn btn-default pull-right">
-                                            <a href="./editTodo.html"><span class="glyphicon glyphicon-wrench"
-                                                                    aria-hidden="true"></span></a>
+                                            <button type="submit">
+                                                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                                            </button>
                                         </span>
+                                        </form>
                                     </div>
                                 </div>
                             </li>
