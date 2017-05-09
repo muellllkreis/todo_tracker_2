@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> TODO-Tracker </title>
+    <title> TODOTracker </title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -13,17 +13,10 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <!-- Bootstrap Date-Picker Plugin -->
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
     {% load static from staticfiles %}
     <link href="{% static "style.css" %}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:700" rel="stylesheet">
-
-
+    
 </head>
 <body>
 <div class="navbar navbar-default">
@@ -46,39 +39,24 @@
         </div>
     </div>
 </div>
-<section class="newTodo">
+<section class="imprint">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2 header-section">
-                <h1 class="highlight hidden-xs hidden-sm">Create</h1>
-                <h1 class="highlight-sm hidden-md hidden-lg">Create</h1>
+                <h1 class="highlight hidden-xs hidden-sm">Contact</h1>
+                <h1 class="highlight-sm hidden-md hidden-lg">Contact</h1>
             </div>
         </div>
-		
-	  <div class="row">
-		<div class="col-md-8 col-md-offset-2">
-		  <form action="{% url 'tracker:esubmit' todo.id %}" method="post">
-			{% csrf_token %}
-			<div class="form-group">
-              <label>Description</label>
-              {{ form.todo_text }}
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 header-section">
+                <p><strong>Developed by Matias Rietig & Carolin Stolpe</strong></p>
+                <p>Technische Universität Berlin</p>
+                <p>Straße des 17. Juni 135</p>
+                <p>10623 Berlin</p>
+                <p>Contact: info@todotracker.com</p>
             </div>
-			<div class="form-inline">
-			  <div class="form-group">
-				<label class="control-label" for="date">Deadline</label>
-				{{ form.todo_date }}
-			  </div>
-				<label>Progress</label>
-				<div class="input-group">
-				  {{ form.todo_progress }}
-				  <div class="input-group-addon">%</div>
-				</div>
-			</div>
-			<button type="submit" class="btn btn-default pull-right" value="submit">Add new Todo to List.</button>
-		  </form>
-		</div>
-	  </div>
-	</div>
+        </div>
+    </div>
 </section>
 <footer class="footer">
     <div class="container">
@@ -86,18 +64,4 @@
     </div>
 </footer>
 </body>
-	<script>
-			/*$(document).ready(function(){
-			  var date_input=$('input[name="date"]');
-			  var container="body";
-			  var options={
-				format: 'dd/mm/yyyy',
-				container: container,
-				todayHighlight: true,
-				autoclose: true,
-				orientation: "top right"
-			  };
-			  date_input.datepicker(options);
-			})*/
-	</script>
 </html>

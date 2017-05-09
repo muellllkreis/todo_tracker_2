@@ -34,11 +34,20 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="{% url 'tracker:index' %}">Overview</a></li>
                 <li><a href="{% url 'tracker:create' %}">Create</a></li>
-                <li><a href="./imprint.html">Imprint</a></li>
+                <li><a href="{% url 'tracker:contact' %}">Contact</a></li>
             </ul>
         </div>
     </div>
 </div>
+          {% if messages %}
+          <div class="row">
+            <div class="success">
+            {% for message in messages %}
+              {{ message }}
+            {% endfor %}
+            </div>
+          </div>
+          {% endif %} 
 <section class="landing">
     <div class="jumbotron jumbotron-fluid jumbotron-md-lg hidden-xs hidden-sm">
         <div class="title">

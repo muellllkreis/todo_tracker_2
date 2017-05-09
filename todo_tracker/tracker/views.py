@@ -2,22 +2,22 @@ from django import forms
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.template import loader
-from django.core.urlresolvers import reverse
+from django.contrib import messages
 
 from .models import Todo
 from .forms import CreateForm, DeleteForm, EditForm
 
 def index(request):
-    latest_todo_list = Todo.objects.order_by('-todo_date')[:5]
+    latest_todo_list = Todo.objects.order_by('-todo_date')[:10]
     context = {'latest_todo_list': latest_todo_list} 
     return render(request, 'tracker/index.html', context)
 
 def delete(request, todo_id):
     if request.method == 'POST':
         form = DeleteForm(request.POST)
+        messages.success(request, 'Todo \"%s\" was deleted' % Todo.objects.get(id=todo_id).todo_text)
         Todo.objects.get(id=todo_id).delete()
         return HttpResponseRedirect('/tracker/')
-
     else:
         form = DeleteForm()
         return render(request, 'tracker/create.html', {'form': form})
@@ -31,6 +31,7 @@ def create(request):
             todo_progress = form.cleaned_data['todo_progress']
             t = Todo(todo_text=todo_text, todo_date=todo_date, todo_progress=todo_progress)
             t.save()
+            messages.success(request, 'Todo \"%s\" was saved' % todo_text)
             return HttpResponseRedirect('/tracker/')
         else:
             return HttpResponseRedirect('/tracker/')
@@ -57,6 +58,7 @@ def esubmit(request, todo_id):
             t.todo_date = todo_date
             t.todo_progress = todo_progress
             t.save()
+            messages.success(request, 'Todo \"%s\" was edited successfully' % todo_text)
             return HttpResponseRedirect('/tracker/')
         else:
             return HttpResponseRedirect('/tracker/')
@@ -64,3 +66,6 @@ def esubmit(request, todo_id):
     else:
         form = CreateForm()
         return render(request, 'tracker/edit.html', {'form': form})
+
+def contact(request):
+    return render(request, 'tracker/contact.html')
