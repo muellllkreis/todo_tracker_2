@@ -86,20 +86,16 @@
                                     </div>
                                     <div class="col-md-2">
                                         <form name="delete" method="post" action="{% url 'tracker:delete' todo.id %}">
-                                        {% csrf_token %}
-                                        <span class="btn btn-default pull-right">
-                                            <button type="submit">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default pull-right">
                                                 <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                                             </button>
-                                        </span>
                                         </form>
                                         <form name="edit" method="post" action="{% url 'tracker:edit' todo.id %}">
-                                        {% csrf_token %}
-                                        <span class="btn btn-default pull-right">
-                                            <button type="submit">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-default pull-right">
                                                 <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
                                             </button>
-                                        </span>
                                         </form>
                                     </div>
                                 </div>
