@@ -1,6 +1,6 @@
 # todo_tracker_2
 
-Todo_tracker_2 ist ein Website zur Organisation der persönlichen Todos.
+Todo_tracker_2 ist eine Website zur Organisation der persönlichen Todos.
 
 ## Motivation
 
